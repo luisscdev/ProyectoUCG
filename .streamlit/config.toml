@@ -1,0 +1,22 @@
+# Configuración de tema - Proyecto UCG
+# Tema claro moderno con acentos azules (estilo automotriz premium)
+
+[theme]
+base = "light"
+primaryColor = "#1C69D4"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F1F5F9"
+textColor = "#0F172A"
+font = "sans serif"
+
+[server]
+headless = true
+runOnSave = true
+fileWatcherType = "auto"
+
+[browser]
+gatherUsageStats = false
+
+[client]
+showErrorDetails = true
+toolbarMode = "viewer"
