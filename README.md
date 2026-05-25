@@ -234,8 +234,8 @@ flowchart LR
 
 ### 1. Cloná el repositorio
 ```bash
-git clone https://github.com/tu-usuario/ls-autopredict.git
-cd ls-autopredict
+git clone https://github.com/luisscdev/ProyectoUCG.git
+cd ProyectoUCG
 ```
 
 ### 2. Creá un entorno virtual *(recomendado)*
