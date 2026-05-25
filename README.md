@@ -4,7 +4,7 @@
 
 # LS AutoPredict
 
-**Aplicación inteligente para estimar el precio de vehículos BMW usados**
+**Aplicación inteligente para estimar el precio de vehículos BMW usados**  
 *Maestría en Inteligencia Artificial y Ciencia de Datos · Universidad Casa Grande*
 
 <br>
@@ -32,9 +32,9 @@
 
 Este proyecto es mi entrega final para la asignatura **Paradigmas de Programación para Inteligencia Artificial y Análisis de Datos**, dentro de la Maestría en Inteligencia Artificial y Ciencia de Datos de la **Universidad Casa Grande**.
 
-La idea fue tomar un dataset real de Kaggle y llevar la solución completa: desde la exploración inicial hasta una aplicación interactiva que cualquier persona pueda usar desde el navegador. Aproveché el trabajo para mostrar cómo Python permite combinar **tres paradigmas de programación** dentro de un mismo proyecto sin que el código se vuelva un caos.
+La idea fue tomar un dataset real de Kaggle y desarrollar una solución completa: desde la exploración inicial hasta una aplicación interactiva que cualquier persona pueda utilizar desde el navegador. Aproveché el proyecto para mostrar cómo Python permite combinar **tres paradigmas de programación** dentro de una misma solución sin que el código se vuelva difícil de mantener.
 
-> 🎯 **El objetivo**: estimar el precio de un BMW usado a partir de sus características técnicas, con un modelo de Machine Learning entrenado sobre 10.000+ vehículos del mercado británico.
+> 🎯 **Objetivo:** estimar el precio de un BMW usado a partir de sus características técnicas, utilizando un modelo de Machine Learning entrenado sobre más de 10.000 vehículos del mercado británico.
 
 ---
 
@@ -45,13 +45,13 @@ La idea fue tomar un dataset real de Kaggle y llevar la solución completa: desd
 <td width="50%">
 
 ### 📊 Dashboard interactivo
-KPIs en vivo, gráficos dinámicos con Plotly y una vista clara del catálogo de 10.781 vehículos BMW.
+KPIs en tiempo real, gráficos dinámicos con Plotly y una vista clara del catálogo de 10.781 vehículos BMW.
 
 </td>
 <td width="50%">
 
 ### 🧹 Pipeline de limpieza
-Visualización paso a paso de cómo se prepararon los datos: duplicados, valores atípicos, variables derivadas.
+Visualización paso a paso del proceso de preparación de datos: duplicados, valores atípicos y variables derivadas.
 
 </td>
 </tr>
@@ -65,21 +65,21 @@ Estadísticas descriptivas, matriz de correlación interactiva y buscador con fi
 <td width="50%">
 
 ### 📈 Visualizaciones por categoría
-Pestañas organizadas: Distribuciones, Relaciones, Rankings y Tendencias temporales.
+Pestañas organizadas en distribuciones, relaciones, rankings y tendencias temporales.
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### 🤖 Auto-ML con LazyPredict
-Compara automáticamente ~40 algoritmos de regresión y entrena el que mejor R² obtuvo.
+### 🤖 AutoML con LazyPredict
+Comparación automática de aproximadamente 40 algoritmos de regresión para seleccionar el modelo con mejor desempeño.
 
 </td>
 <td width="50%">
 
 ### 🎯 Predicción en tiempo real
-Formulario simple → estimación del precio en menos de un segundo, mostrando el algoritmo usado.
+Formulario interactivo que permite obtener una estimación del precio en menos de un segundo, mostrando además el algoritmo utilizado.
 
 </td>
 </tr>
@@ -107,7 +107,7 @@ Formulario simple → estimación del precio en menos de un segundo, mostrando e
 
 ## 📂 Estructura del proyecto
 
-```
+```text
 ProyectoUCG/
 │
 ├── 📄 app.py                       # Aplicación Streamlit completa
@@ -115,31 +115,30 @@ ProyectoUCG/
 ├── 📖 README.md                    # Este archivo
 ├── 🔒 .gitignore
 │
-├── ⚙️  .streamlit/
-│   └── config.toml                # Tema claro con acentos azul BMW
+├── ⚙️ .streamlit/
+│   └── config.toml                 # Tema visual personalizado
 │
 ├── 📊 data/
-│   └── dataset_bmw.csv            # 10.781 vehículos BMW (Kaggle)
+│   └── dataset_bmw.csv             # Dataset BMW obtenido de Kaggle
 │
 ├── 🎨 assets/
-│   ├── ls_autopredict_icono.svg   # Favicon
-│   └── ls_autopredict_logo.png    # Logotipo del sidebar
+│   ├── ls_autopredict_icono.svg
+│   └── ls_autopredict_logo.png
 │
-└── 🤖 modelo_bmw.joblib            # Generado tras entrenar
-```
+└── 🤖 modelo_bmw.joblib            # Modelo entrenado```
 
-Decidí mantener todo el código en un solo `app.py` en lugar de partirlo en muchos módulos. Para un proyecto de este tamaño me parece más claro tener la lógica a la vista y además facilita el despliegue en Streamlit Cloud.
+Decidí mantener todo el código en un solo `app.py` en lugar de partirlo en varios módulos. Para un proyecto de este tamaño me parece más claro tener la lógica a la vista, y además facilita el despliegue en Streamlit Cloud.
 
 ---
 
 ## 🎯 Los tres paradigmas en acción
 
-Una de las cosas que quise mostrar es cómo Python permite mezclar paradigmas sin sacrificar legibilidad. Cada uno cumple un rol específico dentro del proyecto:
+Una de las cosas que quise mostrar es cómo Python permite mezclar paradigmas sin sacrificar la legibilidad del código. Cada uno cumple un rol específico dentro del proyecto:
 
 <details open>
 <summary><b>🏛️ Programación Orientada a Objetos</b></summary>
 
-Implementada en las clases `Vehiculo` y `PredictorPrecio`. La primera representa un vehículo del dominio con sus atributos y métodos. La segunda encapsula el modelo entrenado y carga automáticamente el `.joblib` si existe.
+Implementada en las clases `Vehiculo` y `PredictorPrecio`. La primera representa un vehículo del dominio con sus atributos y métodos. La segunda encapsula el modelo entrenado y carga automáticamente el archivo `.joblib` si existe.
 
 ```python
 class Vehiculo:
@@ -160,7 +159,7 @@ class Vehiculo:
 <details open>
 <summary><b>λ Programación Funcional</b></summary>
 
-Funciones puras que reciben un DataFrame y devuelven uno nuevo, sin mutar el original. Se componen mediante `.pipe()`:
+Funciones puras que reciben un DataFrame y retornan uno nuevo, sin mutar el original. Se componen mediante `.pipe()` de Pandas:
 
 ```python
 def pipeline_limpieza(df):
@@ -191,7 +190,7 @@ def top_modelos(df, n=10):
 
 ## 📊 Sobre el dataset
 
-Conjunto de **10.781 vehículos BMW** comercializados en el Reino Unido entre **1996 y 2020**, obtenido de Kaggle.
+Conjunto de **10.781 vehículos BMW** comercializados en el Reino Unido entre **1996 y 2020**, descargado de Kaggle.
 
 | # | Variable | Tipo | Descripción |
 |:---:|---|---|---|
@@ -219,72 +218,72 @@ flowchart LR
     E -.->|Iterar| B
 ```
 
-| Fase | Lo que hice |
+| Fase | Lo que se hizo |
 |---|---|
 | **1. Negocio** | Definir el problema: estimar precios de BMW usados |
 | **2. Datos** | Estadísticas descriptivas, distribuciones, correlaciones |
-| **3. Preparación** | Limpieza, One-Hot Encoding, StandardScaler |
-| **4. Modelado** | Comparación con LazyPredict (~40 algoritmos) |
-| **5. Evaluación** | R², MAE, RMSE sobre conjunto de prueba (20%) |
-| **6. Despliegue** | App Streamlit lista para producción |
+| **3. Preparación** | Limpieza, One-Hot Encoding y escalado con StandardScaler |
+| **4. Modelado** | Comparación con LazyPredict (alrededor de 40 algoritmos) |
+| **5. Evaluación** | R², MAE y RMSE sobre el conjunto de prueba (20%) |
+| **6. Despliegue** | Aplicación Streamlit lista para producción |
 
 ---
 
 ## 🚀 Instalación
 
-### 1. Cloná el repositorio
+### 1. Clona el repositorio
 ```bash
-git clone https://github.com/luisscdev/ProyectoUCG.git
-cd ProyectoUCG
+git clone https://github.com/tu-usuario/ls-autopredict.git
+cd ls-autopredict
 ```
 
-### 2. Creá un entorno virtual *(recomendado)*
+### 2. Crea un entorno virtual *(recomendado)*
 ```bash
 python -m venv .venv
 source .venv/bin/activate    # Linux / macOS
 .venv\Scripts\activate       # Windows
 ```
 
-### 3. Instalá las dependencias
+### 3. Instala las dependencias
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Ejecutá la aplicación
+### 4. Ejecuta la aplicación
 ```bash
 streamlit run app.py
 ```
 
-Abrí tu navegador en **`http://localhost:8501`** y listo.
+Luego abre tu navegador en **`http://localhost:8501`** y listo.
 
 ---
 
 ## 🤖 Cómo entrenar el modelo
 
-La pestaña **Predicción** de la app te guía por dos pasos:
+La pestaña **Predicción** de la app te guía en dos pasos:
 
 ### Paso 1 — Comparar modelos
-Click en **"🚀 Ejecutar LazyPredict"**. En menos de 2 minutos verás un ranking de ~40 algoritmos ordenados por R² ajustado.
+Haz clic en **"🚀 Ejecutar LazyPredict"**. En menos de dos minutos verás un ranking de aproximadamente 40 algoritmos ordenados por R² ajustado.
 
 ### Paso 2 — Entrenar automáticamente
-La app detecta cuál fue el modelo top del ranking y muestra:
+La aplicación detecta cuál fue el modelo top del ranking y muestra:
 > 🏆 *Modelo recomendado por LazyPredict: **XGBRegressor***
 
-Un click en el botón y se entrena sobre el dataset completo. El `.joblib` queda guardado y la predicción ya usa el modelo real.
+Un clic en el botón y el algoritmo se entrena sobre el dataset completo. El archivo `.joblib` queda guardado y la pestaña de predicción ya lo utiliza para estimar precios reales.
 
-> 💡 Si todavía no entrenaste el modelo, la app usa una fórmula heurística básica como respaldo para que la interfaz no quede vacía.
+> 💡 Si todavía no has entrenado el modelo, la app usa una fórmula heurística básica como respaldo para que la interfaz no quede vacía.
 
 ---
 
 ## 📈 Resultados
 
-Con **XGBoost** entrenado sobre los 10.664 vehículos limpios:
+Con **XGBoost** entrenado sobre los 10.664 vehículos limpios obtuve los siguientes resultados:
 
 <div align="center">
 
 | Métrica | Valor | Interpretación |
 |:---:|:---:|:---|
-| **R² ajustado** | `0.9366` | Explica el 94% de la variabilidad del precio |
+| **R² ajustado** | `0.9366` | El modelo explica el 94% de la variabilidad del precio |
 | **R²** | `0.9405` | Coeficiente de determinación |
 | **RMSE** | `£ 2,967` | Error cuadrático medio |
 | **MAE** | `£ 1,800` | Error absoluto medio |
@@ -301,19 +300,19 @@ Con **XGBoost** entrenado sobre los 10.664 vehículos limpios:
 | 4 | BaggingRegressor | 0.9227 | 3,277 | 0.19 |
 | 5 | GradientBoostingRegressor | 0.9143 | 3,451 | 0.30 |
 
-Los algoritmos basados en **ensambles de árboles** dominaron el ranking. La regresión lineal y sus variantes quedaron muy por debajo, lo que confirma que hay relaciones no lineales importantes entre las variables.
+Los algoritmos basados en **ensambles de árboles** dominaron el ranking. La regresión lineal y sus variantes quedaron muy por debajo, lo que confirma que existen relaciones no lineales importantes entre las variables.
 
 ---
 
 ## 💡 Lo que aprendí
 
-> **CRISP-DM ayuda a no perderte.** Tener las fases marcadas evita saltar al modelado antes de tiempo.
+> **CRISP-DM ayuda a no perderse.** Tener las fases marcadas evita saltar al modelado antes de tiempo.
 
-> **LazyPredict es un acelerador, no una bala de plata.** Te da una idea rápida de qué familia de algoritmos vale la pena, pero después hay que afinar el modelo elegido.
+> **LazyPredict es un acelerador, no una bala de plata.** Te da una idea rápida de qué familia de algoritmos vale la pena explorar, pero después igual hay que afinar el modelo elegido.
 
-> **Mezclar paradigmas se siente natural en Python** cuando cada uno se usa donde corresponde. Forzar todo a OOP cuando una función pura basta termina siendo contraproducente.
+> **Mezclar paradigmas se siente natural en Python** cuando cada uno se usa donde corresponde. Forzar todo a POO cuando una función pura basta termina siendo contraproducente.
 
-> **Streamlit es ideal para prototipos**, pero hay que pelearse un poco con el CSS si querés que la app tenga personalidad propia.
+> **Streamlit es ideal para prototipos**, pero hay que dedicarle tiempo al CSS si quieres que la aplicación tenga personalidad propia.
 
 ---
 
@@ -329,7 +328,7 @@ Los algoritmos basados en **ensambles de árboles** dominaron el ranking. La reg
 
 *Estudiante de Maestría · Desarrollador*
 Maestría en Inteligencia Artificial y Ciencia de Datos
-Universidad Casa Grande · Ecuador 🇪🇨
+Universidad Casa Grande · Guayaquil, Ecuador 🇪🇨
 
 📧 [luissuarez2t@gmail.com](mailto:luissuarez2t@gmail.com)
 
@@ -349,8 +348,8 @@ Proyecto académico desarrollado con fines educativos. El dataset original es p�
 
 ---
 
-⭐ *Si este proyecto te resultó útil o interesante, considerá darle una estrella en GitHub.*
+⭐ *Si este proyecto te resultó útil o interesante, considera darle una estrella en GitHub.*
 
-**Made with 💙 and Python · 2026**
+**Hecho con 💙 y Python · 2026**
 
 </div>
