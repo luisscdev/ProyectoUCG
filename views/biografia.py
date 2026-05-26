@@ -18,9 +18,9 @@ def render() -> None:
         st.markdown(
             """
             <div style="text-align: center;">
-                <div class="bio-avatar">LS</div>
+                <div class="bio-avatar"><img src='/assets/perfil.png' width='150px'/></div>
                 <div style="margin-top: 16px; font-size: 1.3rem; font-weight: 700; color: #FAFAFA;">
-                    Luis Alexander Suárez Colimba
+                    Luis Alexander d Suárez Colimba
                 </div>
                 <div style="color: #5BA4F5; margin-top: 4px;">
                     Estudiante de Maestría · Desarrollador
