@@ -348,8 +348,6 @@ Proyecto académico desarrollado con fines educativos. El dataset original es p�
 
 ---
 
-⭐ *Si este proyecto te resultó útil o interesante, considera darle una estrella en GitHub.*
-
 **Hecho con 💙 y Python · 2026**
 
 </div>
