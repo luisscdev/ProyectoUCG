@@ -39,7 +39,7 @@ def render():
         serie = precio_por_anio(df)
         fig = px.area(serie, x="year", y="precio",
                       color_discrete_sequence=["#1C69D4"])
-        fig.update_layout(xaxis_title="", yaxis_title="$", height=320)
+        fig.update_layout(xaxis_title="Año (year)", yaxis_title="Precio ($ price)", height=320)
         st.plotly_chart(aplicar_template(fig), use_container_width=True)
 
     with col2:
