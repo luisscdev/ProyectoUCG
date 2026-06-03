@@ -32,11 +32,15 @@ ENV/
 docs/
 
 # ========================================================
-# Modelos entrenados (pueden pesar mucho)
+# Modelos entrenados
 # ========================================================
-*.joblib
-*.pkl
-*.pickle
+# IMPORTANTE: modelo_bmw.joblib SI se sube al repo para que
+# Streamlit Cloud pueda cargarlo directo sin reentrenar
+# (la app no tiene boton de entrenar, solo carga el .joblib)
+#
+# *.joblib   -> comentado a proposito
+# *.pkl      -> comentado a proposito
+# *.pickle   -> comentado a proposito
 *.h5
 *.model
 models/
