@@ -30,19 +30,26 @@ def render():
         ("1. Eliminar espacios en blanco",
          "Limpiamos espacios al inicio/fin de la columna 'model'."),
         ("2. Quitar duplicados",
-         "Eliminamos registros identicos para evitar sesgos."),
-        ("3. Filtrar precios validos",
-         "Conservamos vehiculos con precio entre $650 y $260.000."),
+         "Eliminamos registros idénticos para evitar sesgos."),
+        ("3. Filtrar precios válidos",
+         "Conservamos vehículos con precio entre $650 y $260.000."),
         ("4. Crear variable derivada",
-         "Calculamos la antiguedad del vehiculo (2024 - anio)."),
+         "Calculamos la antigüedad del vehículo (2024 - año)."),
     ]
-    for titulo, desc in pasos:
-        st.markdown(f"""
-            <div class="card">
-                <div style="font-weight: 700; color: #1C69D4; font-size: 1.05rem;">{titulo}</div>
-                <div style="color: #475569; margin-top: 4px;">{desc}</div>
-            </div>
-        """, unsafe_allow_html=True)
+    # 4 cards en una sola fila
+    cols = st.columns(4)
+    for col, (titulo, desc) in zip(cols, pasos):
+        with col:
+            st.markdown(f"""
+                <div class="card" style="height: 100%; min-height: 130px;">
+                    <div style="font-weight: 700; color: #1C69D4; font-size: 1rem; line-height: 1.3;">
+                        {titulo}
+                    </div>
+                    <div style="color: #475569; margin-top: 8px; font-size: 0.92rem; line-height: 1.4;">
+                        {desc}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
     st.markdown("<hr/>", unsafe_allow_html=True)
     st.markdown("### Resultado Paso a Paso")
