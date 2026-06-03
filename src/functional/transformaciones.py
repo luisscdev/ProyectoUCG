@@ -9,7 +9,7 @@ Recursos del paradigma utilizados:
     * Funciones puras
     * Funciones de orden superior (map, filter, reduce)
     * Lambdas
-    * Composición de funciones
+    * Composición de funciones Ok
 """
 
 from __future__ import annotations
