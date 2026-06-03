@@ -1,8 +1,8 @@
 """
-LS AutoPredict - Prediccion de precio de vehiculos BMW usados.
+LS AutoPredict - Predicción de precio de vehiculos BMW usados.
 
 Autor: Luis Alexander Suarez Colimba
-Maestria en Inteligencia Artificial y Ciencia de Datos
+Maestría en Inteligencia Artificial y Ciencia de Datos
 Universidad Casa Grande
 
 Arquitectura:
@@ -59,8 +59,8 @@ with st.sidebar:
 
     seleccion = option_menu(
         menu_title=None,
-        options=["Inicio", "Limpieza", "Analisis",
-                 "Visualizaciones", "Prediccion", "Biografia"],
+        options=["Inicio", "Limpieza", "Análisis",
+                 "Visualizaciones", "Predicción", "Biografía"],
         icons=["house-fill", "magic", "search",
                "bar-chart-fill", "calculator-fill", "person-circle"],
         default_index=0,
@@ -84,7 +84,7 @@ with st.sidebar:
     st.markdown("""
         <div style="color: #64748B; font-size: 0.78rem; text-align: center;">
            🚀 Luis Suárez · 2026<br>
-           🎓 Maestria IA y Ciencia de Datos
+           🎓 Maestría IA y Ciencia de Datos
         </div>
     """, unsafe_allow_html=True)
 
@@ -95,10 +95,10 @@ with st.sidebar:
 PAGINAS = {
     "Inicio": inicio.render,
     "Limpieza": limpieza.render,
-    "Analisis": analisis.render,
+    "Análisis": analisis.render,
     "Visualizaciones": visualizaciones.render,
-    "Prediccion": prediccion.render,
-    "Biografia": biografia.render,
+    "Predicción": prediccion.render,
+    "Biografía": biografia.render,
 }
 
 PAGINAS[seleccion]()

@@ -1,4 +1,4 @@
-"""Vista de Analisis - Estadisticas y busqueda filtrada."""
+"""Vista de Análisis - Estadísticas y busqueda filtrada."""
 
 import streamlit as st
 import numpy as np
@@ -12,16 +12,16 @@ from core import (
 def render():
     df = pipeline_limpieza(cargar_datos())
 
-    hero("Analisis Exploratorio",
+    hero("Análisis Exploratorio",
          "Inspecciona los datos, revisa estadisticas y filtra registros "
          "segun tus criterios.",
-         badges=["EDA", "Filtros", "Estadisticas"])
+         badges=["EDA", "Filtros", "Estadísticas"])
 
-    st.markdown("### Estadisticas Descriptivas")
+    st.markdown("### Estadísticas Descriptivas")
     st.dataframe(df.describe().round(2).T, use_container_width=True)
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown("### Matriz de Correlacion")
+    st.markdown("### Matriz de Correlación")
     corr = df.select_dtypes(include=np.number).corr().round(2)
     fig = go.Figure(data=go.Heatmap(
         z=corr.values, x=corr.columns, y=corr.columns,
@@ -33,7 +33,7 @@ def render():
     st.plotly_chart(aplicar_template(fig), use_container_width=True)
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown("### Busqueda Filtrada")
+    st.markdown("### Búsqueda Filtrada")
     col1, col2, col3 = st.columns(3)
     with col1:
         modelo = st.selectbox("Modelo",
@@ -42,8 +42,8 @@ def render():
         combustible = st.selectbox("Combustible",
             ["Todos"] + sorted(df["fuelType"].unique().tolist()))
     with col3:
-        precio_max = st.number_input("Precio maximo (£)",
-            1000, 200000, 50000, step=1000)
+        precio_max = st.number_input("Precio maximo (USD)",
+            1500, 260000, 65000, step=1000)
 
     rango = st.slider("Rango de anios",
                       int(df["year"].min()), int(df["year"].max()),

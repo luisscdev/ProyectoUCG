@@ -32,7 +32,7 @@ def render():
         ("2. Quitar duplicados",
          "Eliminamos registros identicos para evitar sesgos."),
         ("3. Filtrar precios validos",
-         "Conservamos vehiculos con precio entre £500 y £200.000."),
+         "Conservamos vehiculos con precio entre $650 y $260.000."),
         ("4. Crear variable derivada",
          "Calculamos la antiguedad del vehiculo (2024 - anio)."),
     ]
@@ -73,8 +73,8 @@ def render():
     st.plotly_chart(aplicar_template(fig), use_container_width=True)
 
     if df_crudo.isnull().sum().sum() == 0:
-        st.success("El dataset no tiene valores nulos. Excelente!")
+        st.success("El dataset no tiene valores nulos. ¡Excelente!")
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown("### Dataset Despues de la Limpieza")
+    st.markdown("### Dataset Después de la Limpieza")
     st.dataframe(df4.head(20), use_container_width=True, hide_index=True)

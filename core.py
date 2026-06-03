@@ -1,5 +1,5 @@
 """
-core.py - Modulo central del proyecto LS AutoPredict.
+core.py - Módulo central del proyecto LS AutoPredict.
 
 Contiene:
   - Constantes (rutas, columnas, paleta)
@@ -264,7 +264,7 @@ class PredictorPrecio:
     """Estima el precio de un vehiculo (POO).
 
     Carga automaticamente el modelo entrenado si existe.
-    Si no existe, usa una formula heuristica de respaldo.
+    Síno existe, usa una formula heuristica de respaldo.
     """
 
     def __init__(self):
@@ -280,7 +280,7 @@ class PredictorPrecio:
 
     def nombre_modelo(self):
         if self.modelo_ml is None:
-            return "Heuristica de respaldo"
+            return "Heurística de respaldo"
         try:
             return self.modelo_ml.named_steps["regressor"].__class__.__name__
         except Exception:
@@ -288,13 +288,14 @@ class PredictorPrecio:
 
     def predecir(self, vehiculo):
         if self.modelo_ml is None:
-            base = 30000
-            base -= (2024 - vehiculo.anio) * 1500
-            base -= (vehiculo.kilometraje / 1000) * 35
-            base += (vehiculo.tamano_motor - 2.0) * 2500
+            # Heurística en USD (factor 1.30 aplicado sobre el rango original)
+            base = 39000
+            base -= (2024 - vehiculo.anio) * 1950
+            base -= (vehiculo.kilometraje / 1000) * 45
+            base += (vehiculo.tamano_motor - 2.0) * 3250
             if vehiculo.es_premium():
-                base += 5000
-            return max(base, 1500)
+                base += 6500
+            return max(base, 2000)
         return float(self.modelo_ml.predict(vehiculo.to_df())[0])
 
 
@@ -309,7 +310,8 @@ def limpiar_espacios(df):
 def quitar_duplicados(df):
     return df.drop_duplicates().reset_index(drop=True)
 
-def filtrar_precio_valido(df, minimo=500, maximo=200000):
+def filtrar_precio_valido(df, minimo=650, maximo=260000):
+    # Rangos en USD (originales £500-£200.000 convertidos a USD con tasa 1.30)
     return df[(df["price"] >= minimo) &
               (df["price"] <= maximo)].reset_index(drop=True)
 
@@ -317,7 +319,7 @@ def agregar_antiguedad(df, anio_ref=2024):
     return df.assign(antiguedad=lambda d: anio_ref - d["year"])
 
 def pipeline_limpieza(df):
-    """Composicion funcional con .pipe()"""
+    """Composición funcional con .pipe()"""
     return (df.pipe(limpiar_espacios)
               .pipe(quitar_duplicados)
               .pipe(filtrar_precio_valido)
@@ -355,11 +357,12 @@ def top_modelos(df, n=10):
 # ============================================================
 @st.cache_data
 def cargar_datos():
+    """Carga el dataset CSV de vehiculos BMW (precios en USD)."""
     posibles = [Path("data/dataset_bmw.csv"), Path("docs/dataset_bmw.csv")]
     for ruta in posibles:
         if ruta.exists():
             return pd.read_csv(ruta)
-    st.error("No se encontro el archivo dataset_bmw.csv")
+    st.error("No se encontro el archivo dataset_bmw.csv en data/ ni en docs/")
     st.stop()
 
 

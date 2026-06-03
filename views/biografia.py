@@ -1,4 +1,4 @@
-"""Vista de Biografia - Informacion personal del autor."""
+"""Vista de Biografia - Información personal del autor."""
 
 import streamlit as st
 import base64
@@ -7,8 +7,8 @@ from core import hero,RUTA_PERFIL
 
 def render():
     hero("Sobre el Autor",
-         "Informacion personal del desarrollador del proyecto.",
-         badges=["Biografia"])
+         "Información personal del desarrollador del proyecto.",
+         badges=["Biografía"])
 
     col_avatar, col_info = st.columns([1, 2])
 
@@ -26,13 +26,13 @@ def render():
                     Luis Alexander Suarez Colimba
                 </div>
                 <div style="color: #1C69D4; margin-top: 4px;">
-                    Estudiante de Maestria
+                    Estudiante de Maestría
                 </div>
             </div>
         """, unsafe_allow_html=True)
 
     with col_info:
-        st.markdown("### Quien Soy")
+        st.markdown("### Quién Soy")
         st.markdown("""
             <p style="text-align: justify">
             Luis A. Suárez C. Nacido en Guayaquil, Ecuador. 
@@ -76,9 +76,9 @@ def render():
         """, unsafe_allow_html=True)
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown("### Formacion Academica")
+    st.markdown("### Formación Académica")
     formaciones = [
-        ("Maestria en IA y Ciencia de Datos",
+        ("Maestría en IA y Ciencia de Datos",
          "Universidad Casa Grande", "2026 - En curso"),
         ("Ingeniería en Sistemas Computacionales",
          "Universidad de Guayaquil", "2015 - 2020"),
@@ -97,7 +97,7 @@ def render():
 
     
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown("### Portaflio")
+    st.markdown("### Portafolio")
     st.markdown("""
                 <a href='https://profile-dun-two.vercel.app'>Portafolio Link 🌐</a>
                 """,unsafe_allow_html=True)
@@ -105,7 +105,7 @@ def render():
     
 
     st.markdown("<hr/>", unsafe_allow_html=True)
-    st.markdown("### Habilidades Tecnicas")
+    st.markdown("### Habilidades Técnicas")
     habs = {
     "Lenguajes": [
         "Java", "Python", "SQL",

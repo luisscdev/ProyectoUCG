@@ -16,7 +16,7 @@ from typing import Literal, Dict, Any
 import pandas as pd
 
 
-TransmisionLiteral = Literal["Automatic", "Manual", "Semi-Auto"]
+TransmisiónLiteral = Literal["Automatic", "Manual", "Semi-Auto"]
 CombustibleLiteral = Literal["Diesel", "Petrol", "Hybrid", "Electric", "Other"]
 
 
@@ -27,7 +27,7 @@ class Vehiculo:
     modelo: str
     anio: int
     kilometraje: int
-    transmision: TransmisionLiteral
+    transmision: TransmisiónLiteral
     combustible: CombustibleLiteral
     tamano_motor: float
     mpg: float
